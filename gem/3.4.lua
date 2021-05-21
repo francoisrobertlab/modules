@@ -18,7 +18,7 @@ always_load("python/3.8.2")
 always_load("robtools-core")
 
 local home = os.getenv("HOME") or ""
-local gem = pathJoin(home, "projects/def-robertf/gem")
+local gem = pathJoin(home, "projects/def-robertf/apps/gem/3.4")
 local gem_jar = pathJoin(gem, "gem.jar")
 setenv("GEM_BASE", gem)
 setenv("GEM_JAR", gem_jar)

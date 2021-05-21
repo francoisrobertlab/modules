@@ -23,7 +23,7 @@ always_load("python/3.8.2")
 always_load("robtools-core")
 
 local home = os.getenv("HOME") or ""
-local chexmix = pathJoin(home, "projects/def-robertf/chexmix")
+local chexmix = pathJoin(home, "projects/def-robertf/apps/chexmix/0.5")
 local chexmix_jar = pathJoin(chexmix, "chexmix_v0.5.jar")
 setenv("CHEXMIX_BASE", chexmix)
 setenv("CHEXMIX_JAR", chexmix_jar)

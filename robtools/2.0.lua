@@ -41,9 +41,9 @@ always_load("robtools-core")
 
 local home = os.getenv("HOME") or ""
 local project = pathJoin(home, "projects/def-robertf")
-local call_nucleosomes = pathJoin(project, "CallNucleosomes")
+local call_nucleosomes = pathJoin(project, "apps/CallNucleosomes/0.1")
 prepend_path("PERL5LIB", pathJoin(call_nucleosomes, "perl_library"))
-local siqchip = pathJoin(project, "siQ-ChIP")
+local siqchip = pathJoin(project, "app/siQ-ChIP/1.0.0")
 setenv("SIQ_CHIP_BASE", siqchip)
 local trimmomatic_home = os.getenv("EBROOTTRIMMOMATIC") or ""
 setenv("TRIMMOMATIC_JAR", pathJoin(trimmomatic_home, "trimmomatic-0.36.jar"))

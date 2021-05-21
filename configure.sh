@@ -19,22 +19,29 @@ if grep -Fq "ROBERTF_MODULES_DIR=" ~/.bash_profile ; then
     sed -i "$((INDEX-1)),$((INDEX+4))d" ~/.bash_profile
 fi
 
-# Source .def-robertf-addons file on login.
-if ! grep -Fq "source .def-robertf-addons" ~/.bash_profile ; then
-    echo "Adding Robert Lab addons"
-    echo 'if [ -f .def-robertf-addons ]; then' >> ~/.bash_profile
-    echo '  source .def-robertf-addons' >> ~/.bash_profile
+# Remove reference to renamed .def-robertf-addons configuration, if present.
+if grep -Fq ".def-robertf-addons" ~/.bash_profile ; then
+    echo "Removing file .def-robertf-addons from .bash_profile"
+    INDEX=$(grep -n ".def-robertf-addons" ~/.bash_profile | cut -d: -f1)
+    sed -i "$((INDEX-1)),$((INDEX+4))d" ~/.bash_profile
+fi
+
+# Source .robertlab-apps-addons file on login.
+if ! grep -Fq "source .robertlab-apps-addons" ~/.bash_profile ; then
+    echo "Adding Robert Lab Apps addons"
+    echo 'if [ -f .robertlab-apps-addons ]; then' >> ~/.bash_profile
+    echo '  source .robertlab-apps-addons' >> ~/.bash_profile
     echo 'fi' >> ~/.bash_profile
     echo "" >> ~/.bash_profile
 fi
 
-# Create .def-robertf-addons file to alow loading of robert modules.
-if [ -f ~/.def-robertf-addons ] ; then
-    rm ~/.def-robertf-addons
+# Create .robertlab-apps-addons file to allow loading of robert modules.
+if [ -f ~/.robertlab-apps-addons ] ; then
+    rm ~/.robertlab-apps-addons
 fi
-echo "## Robert Lab Modules ##" >> ~/.def-robertf-addons
-echo "MODULES_DIR=~/projects/def-robertf/modules" >> ~/.def-robertf-addons
-echo 'if [ -d "$MODULES_DIR" ]; then' >> ~/.def-robertf-addons
-echo '  module use $MODULES_DIR' >> ~/.def-robertf-addons
-echo 'fi' >> ~/.def-robertf-addons
-echo "" >> ~/.def-robertf-addons
+echo "## Robert Lab Modules ##" >> ~/.robertlab-apps-addons
+echo "MODULES_DIR=~/projects/def-robertf/robertlab-apps/modules" >> ~/.robertlab-apps-addons
+echo 'if [ -d "$MODULES_DIR" ]; then' >> ~/.robertlab-apps-addons
+echo '  module use $MODULES_DIR' >> ~/.robertlab-apps-addons
+echo 'fi' >> ~/.robertlab-apps-addons
+echo "" >> ~/.robertlab-apps-addons

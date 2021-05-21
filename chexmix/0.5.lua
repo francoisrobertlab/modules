@@ -9,7 +9,6 @@ This module sets the following environment variables:
 This module loads the following modules and their requirements:
     - java/1.8.0_191
     - meme/5.2.0
-    - robtools/core/2.0
 ]])
 
 whatis("Version: 0.5")
@@ -21,8 +20,6 @@ always_load("StdEnv/2020")
 always_load("gcc/9.3.0")
 always_load("java/1.8.0_192")
 always_load("meme/5.2.0")
-always_load("python/3.8.2")
-always_load("robtools/core/2.0")
 
 local home = os.getenv("HOME") or ""
 local chexmix = pathJoin(home, "projects/def-robertf/apps/chexmix/0.5")

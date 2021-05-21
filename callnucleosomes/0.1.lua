@@ -15,5 +15,5 @@ always_load("StdEnv/2018.3")
 always_load("perl/5.22.4")
 
 local home = os.getenv("HOME") or ""
-local call_nucleosomes = pathJoin(home, "projects/def-robertf/apps/CallNucleosomes/0.1")
+local call_nucleosomes = pathJoin(home, "projects/def-robertf/robertlab-apps/CallNucleosomes/0.1")
 prepend_path("PERL5LIB", pathJoin(call_nucleosomes, "perl_library"))

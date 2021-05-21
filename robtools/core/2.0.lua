@@ -17,7 +17,7 @@ whatis("Description: Tools to analyze next-generation sequencing (NGS) data")
 prereq(atleast("python","3.5.4"))
 
 local home = os.getenv("HOME") or ""
-local robtools = pathJoin(home, "projects/def-robertf/apps/robtools/2.0")
+local robtools = pathJoin(home, "projects/def-robertf/robertlab-apps/robtools/2.0")
 prepend_path("PATH", pathJoin(robtools, "bash"))
 prepend_path("PATH", pathJoin(robtools, "venv/bin"))
 setenv("ROBTOOLS", robtools)

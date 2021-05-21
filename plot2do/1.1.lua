@@ -23,7 +23,7 @@ prereq("gcc/7.3.0")
 always_load("r/3.6.0")
 
 local home = os.getenv("HOME") or ""
-local base = pathJoin(home, "projects/def-robertf/apps/plot2DO/1.1")
+local base = pathJoin(home, "projects/def-robertf/robertlab-apps/plot2DO/1.1")
 setenv("PLOT2DO_BASE", base)
 setenv("R_LIBS_USER", pathJoin(base, "libs"))
 setenv("R_PROFILE_USER", pathJoin(base, ".Rprofile"))

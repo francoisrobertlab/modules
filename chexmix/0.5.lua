@@ -22,7 +22,7 @@ always_load("java/1.8.0_192")
 always_load("meme/5.2.0")
 
 local home = os.getenv("HOME") or ""
-local chexmix = pathJoin(home, "projects/def-robertf/apps/chexmix/0.5")
+local chexmix = pathJoin(home, "projects/def-robertf/robertlab-apps/chexmix/0.5")
 local chexmix_jar = pathJoin(chexmix, "chexmix_v0.5.jar")
 setenv("CHEXMIX_BASE", chexmix)
 setenv("CHEXMIX_JAR", chexmix_jar)

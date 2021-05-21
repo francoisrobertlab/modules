@@ -23,7 +23,7 @@ prereq("gcc/7.3.0")
 always_load("r/4.0.2")
 
 local home = os.getenv("HOME") or ""
-local base = pathJoin(home, "projects/def-robertf/apps/chipexoqual/1.12.0")
+local base = pathJoin(home, "projects/def-robertf/robertlab-apps/chipexoqual/1.12.0")
 prepend_path("PATH", base)
 setenv("CHIPEXOQUAL_BASE", base)
 setenv("R_LIBS_USER", pathJoin(base,"libs"))

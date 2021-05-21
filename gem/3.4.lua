@@ -19,7 +19,7 @@ always_load("StdEnv/2020")
 always_load("java/1.8.0_192")
 
 local home = os.getenv("HOME") or ""
-local gem = pathJoin(home, "projects/def-robertf/apps/gem/3.4")
+local gem = pathJoin(home, "projects/def-robertf/robertlab-apps/gem/3.4")
 local gem_jar = pathJoin(gem, "gem.jar")
 setenv("GEM_BASE", gem)
 setenv("GEM_JAR", gem_jar)

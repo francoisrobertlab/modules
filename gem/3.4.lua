@@ -13,7 +13,7 @@ whatis("URL: https://groups.csail.mit.edu/cgs/gem/")
 whatis("Description: GEM: High resolution peak calling and motif discovery for ChIP-seq and ChIP-exo data")
 
 always_load("StdEnv/2020")
-always_load("java/1.8.0_121")
+always_load("java/1.8.0_192")
 always_load("python/3.8.2")
 always_load("robtools/core/2.0")
 

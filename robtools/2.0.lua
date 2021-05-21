@@ -23,7 +23,7 @@ whatis("Keywords: NGS, Utility")
 whatis("URL: https://github.com/francoisrobertlab/robtools")
 whatis("Description: Tools to analyze next-generation sequencing (NGS) data")
 
-always_load("nixpkgs/16.09")
+always_load("StdEnv/2018.3")
 always_load("gcc/7.3.0")
 always_load("python/3.7.4")
 always_load("java/1.8.0_121")

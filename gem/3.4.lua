@@ -15,7 +15,7 @@ whatis("Description: GEM: High resolution peak calling and motif discovery for C
 always_load("StdEnv/2020")
 always_load("java/1.8.0_121")
 always_load("python/3.8.2")
-always_load("robtools-core")
+always_load("robtools/core/2.0")
 
 local home = os.getenv("HOME") or ""
 local gem = pathJoin(home, "projects/def-robertf/apps/gem/3.4")

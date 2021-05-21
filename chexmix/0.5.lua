@@ -20,7 +20,7 @@ always_load("openmpi/4.0.3")
 always_load("java/1.8.0_121")
 always_load("meme/5.2.0")
 always_load("python/3.8.2")
-always_load("robtools-core")
+always_load("robtools/core/2.0")
 
 local home = os.getenv("HOME") or ""
 local chexmix = pathJoin(home, "projects/def-robertf/apps/chexmix/0.5")

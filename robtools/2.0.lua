@@ -36,8 +36,8 @@ always_load("samtools/1.9")
 always_load("bedtools/2.27.1")
 always_load("sra-toolkit/2.9.6")
 always_load("kentutils/20180716")
-always_load("vap")
-always_load("robtools-core")
+always_load("vap/1.1.0")
+always_load("robtools/core/2.0")
 
 local home = os.getenv("HOME") or ""
 local project = pathJoin(home, "projects/def-robertf")

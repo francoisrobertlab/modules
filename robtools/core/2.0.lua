@@ -2,6 +2,9 @@ help([[
 For detailed instructions, go to:
     https://github.com/francoisrobertlab/robtools
 
+This module sets the following environment variables:
+    ROBTOOLS:  directory containing robtools
+
 You will need to load all the following module(s) before the "robtools-core" module is available to load.
     - python/3.5.4 or greater
 ]])

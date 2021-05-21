@@ -2,9 +2,13 @@ help([[
 For detailed instructions, go to:
     https://groups.csail.mit.edu/cgs/gem/
 
+This module sets the following environment variables:
+    GEM_BASE:  directory containing GEM and default read distributions files
+    GEM_JAR:   GEM jar file
+
 This module loads the following modules and their requirements:
-    - java/1.8.0_121
-    - robtools-core
+    - java/1.8.0_191
+    - robtools/core/2.0
 ]])
 
 whatis("Version: 3.4")

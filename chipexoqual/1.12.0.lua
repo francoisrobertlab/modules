@@ -3,9 +3,9 @@ For detailed instructions, go to:
     https://www.bioconductor.org/packages/release/bioc/html/ChIPexoQual.html
 
 This module sets the following environment variables:
-    CHIPEXOQUAL_BASE:   directory containing ChIPexoQual
-    R_LIBS_USER:    sets R library directory to use ChIPexoQual
-    R_PROFILE_USER: allows to configure CPAN automatically
+    CHIPEXOQUAL_BASE:  directory containing ChIPexoQual
+    R_LIBS_USER:       sets R library directory to use ChIPexoQual
+    R_PROFILE_USER:    allows to configure CPAN automatically
 
 This module loads the following modules:
     - r/4.0.2

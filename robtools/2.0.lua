@@ -2,8 +2,13 @@ help([[
 For detailed instructions, go to:
     https://github.com/francoisrobertlab/robtools
 
+This module sets the following environment variables:
+    SIQ_CHIP_BASE:         directory containing siQ-ChIP
+    TRIMMOMATIC_JAR:       Trimmomatic jar file
+    TRIMMOMATIC_ADAPTERS:  Folder containing Trimmomatic adapters sequences
+
 This module loads the following modules and their requirements:
-    - robtools-core
+    - robtools/core/2.0
     - python/3.7.4
     - java/1.8.0_121
     - perl/5.22.4
@@ -15,7 +20,7 @@ This module loads the following modules and their requirements:
     - bedtools/2.27.1
     - kentutils/20180716
     - sra-toolkit/2.9.6
-    - vap
+    - vap/1.1.0
 ]])
 
 whatis("Version: 2.0")

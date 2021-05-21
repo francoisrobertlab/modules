@@ -2,10 +2,14 @@ help([[
 For detailed instructions, go to:
     http://mahonylab.org/software/chexmix/
 
+This module sets the following environment variables:
+    CHEXMIX_BASE:  directory containing ChExMix
+    CHEXMIX_JAR:   ChExMix jar file
+
 This module loads the following modules and their requirements:
-    - java/1.8.0_121
+    - java/1.8.0_191
     - meme/5.2.0
-    - robtools-core
+    - robtools/core/2.0
 ]])
 
 whatis("Version: 0.5")

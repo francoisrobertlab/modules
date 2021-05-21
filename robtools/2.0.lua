@@ -3,7 +3,6 @@ For detailed instructions, go to:
     https://github.com/francoisrobertlab/robtools
 
 This module sets the following environment variables:
-    SIQ_CHIP_BASE:         directory containing siQ-ChIP
     TRIMMOMATIC_JAR:       Trimmomatic jar file
     TRIMMOMATIC_ADAPTERS:  Folder containing Trimmomatic adapters sequences
 
@@ -44,8 +43,6 @@ always_load("robtools/core/2.0")
 
 local home = os.getenv("HOME") or ""
 local project = pathJoin(home, "projects/def-robertf")
-local siqchip = pathJoin(project, "app/siQ-ChIP/1.0.0")
-setenv("SIQ_CHIP_BASE", siqchip)
 local trimmomatic_home = os.getenv("EBROOTTRIMMOMATIC") or ""
 setenv("TRIMMOMATIC_JAR", pathJoin(trimmomatic_home, "trimmomatic-0.36.jar"))
 setenv("TRIMMOMATIC_ADAPTERS", pathJoin(trimmomatic_home, "adapters"))

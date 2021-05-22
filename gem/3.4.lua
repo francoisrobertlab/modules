@@ -18,9 +18,12 @@ whatis("Description: GEM: High resolution peak calling and motif discovery for C
 always_load("StdEnv/2020")
 always_load("java/1.8.0_192")
 
-local home = os.getenv("HOME") or ""
-local gem = pathJoin(home, "projects/def-robertf/robertlab-apps/gem/3.4")
-local gem_jar = pathJoin(gem, "gem.jar")
-setenv("GEM_BASE", gem)
-setenv("GEM_JAR", gem_jar)
+local module_path = myFileName()
+local module_name = myModuleFullName()
+local module_base = module_path:sub(1,module_path:find(module_name,1,true)-2)
+local apps_base = module_base:gsub("(.*)/(.*)","%1")
+local home = pathJoin(apps_base, module_name)
+local jar = pathJoin(home, "gem.jar")
+setenv("GEM_BASE", home)
+setenv("GEM_JAR", jar)
 io.stderr:write("To execute GEM run: java -jar $GEM_JAR\n")

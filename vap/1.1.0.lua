@@ -9,6 +9,9 @@ whatis("Keywords: VAP, Utility")
 whatis("URL: https://bitbucket.org/labjacquespe/vap")
 whatis("Description: Versatile Aggregate Profiler (VAP)")
 
-local home = os.getenv("HOME") or ""
-local base = pathJoin(home, "projects/def-robertf/robertlab-apps/vap/1.1.0")
-prepend_path("PATH", base)
+local module_path = myFileName()
+local module_name = myModuleFullName()
+local module_base = module_path:sub(1,module_path:find(module_name,1,true)-2)
+local apps_base = module_base:gsub("(.*)/(.*)","%1")
+local home = pathJoin(apps_base, module_name)
+prepend_path("PATH", home)

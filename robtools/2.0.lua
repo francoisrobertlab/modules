@@ -41,8 +41,6 @@ always_load("kentutils/20180716")
 always_load("vap/1.1.0")
 always_load("robtools/core/2.0")
 
-local home = os.getenv("HOME") or ""
-local project = pathJoin(home, "projects/def-robertf")
 local trimmomatic_home = os.getenv("EBROOTTRIMMOMATIC") or ""
 setenv("TRIMMOMATIC_JAR", pathJoin(trimmomatic_home, "trimmomatic-0.36.jar"))
 setenv("TRIMMOMATIC_ADAPTERS", pathJoin(trimmomatic_home, "adapters"))

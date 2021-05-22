@@ -16,8 +16,11 @@ whatis("Description: Tools to analyze next-generation sequencing (NGS) data")
 
 prereq(atleast("python","3.5.4"))
 
-local home = os.getenv("HOME") or ""
-local robtools = pathJoin(home, "projects/def-robertf/robertlab-apps/robtools/2.0")
-prepend_path("PATH", pathJoin(robtools, "bash"))
-prepend_path("PATH", pathJoin(robtools, "venv/bin"))
-setenv("ROBTOOLS", robtools)
+local module_path = myFileName()
+local module_name = myModuleFullName()
+local module_base = module_path:sub(1,module_path:find(module_name,1,true)-2)
+local apps_base = module_base:gsub("(.*)/(.*)/(.*)","%1")
+local home = pathJoin(apps_base, module_name)
+prepend_path("PATH", pathJoin(home, "bash"))
+prepend_path("PATH", pathJoin(home, "venv/bin"))
+setenv("ROBTOOLS", home)

@@ -2,7 +2,7 @@
 
 if [ "$1" == "clean" ] ; then
     echo "Removing changes made to .bash_profile"
-    if ! grep -Fq "source .def-robertf-addons" ~/.bash_profile ; then
+    if grep -Fq "source .def-robertf-addons" ~/.bash_profile ; then
         INDEX=$(grep -n "source .def-robertf-addons" ~/.bash_profile | cut -d: -f1)
         sed -i "$((INDEX-1)),$((INDEX+2))d" ~/.bash_profile
     fi
@@ -20,10 +20,10 @@ if grep -Fq "ROBERTF_MODULES_DIR=" ~/.bash_profile ; then
 fi
 
 # Remove reference to renamed .def-robertf-addons configuration, if present.
-if grep -Fq ".def-robertf-addons" ~/.bash_profile ; then
+if grep -Fq "source .def-robertf-addons" ~/.bash_profile ; then
     echo "Removing file .def-robertf-addons from .bash_profile"
-    INDEX=$(grep -n ".def-robertf-addons" ~/.bash_profile | cut -d: -f1)
-    sed -i "$((INDEX-1)),$((INDEX+4))d" ~/.bash_profile
+    INDEX=$(grep -n "source .def-robertf-addons" ~/.bash_profile | cut -d: -f1)
+    sed -i "$((INDEX-1)),$((INDEX+2))d" ~/.bash_profile
 fi
 
 # Source .robertlab-apps-addons file on login.

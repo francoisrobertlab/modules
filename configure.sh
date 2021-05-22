@@ -29,10 +29,12 @@ fi
 # Source .robertlab-apps-addons file on login.
 if ! grep -Fq "source .robertlab-apps-addons" ~/.bash_profile ; then
     echo "Adding Robert Lab Apps addons"
-    echo 'if [ -f .robertlab-apps-addons ]; then' >> ~/.bash_profile
-    echo '  source .robertlab-apps-addons' >> ~/.bash_profile
-    echo 'fi' >> ~/.bash_profile
-    echo "" >> ~/.bash_profile
+    {
+      echo 'if [ -f .robertlab-apps-addons ]; then'
+      echo '  source .robertlab-apps-addons'
+      echo 'fi'
+      echo ""
+    }  >> ~/.bash_profile
 fi
 
 # Create .robertlab-apps-addons file to allow loading of robert modules.
@@ -40,9 +42,11 @@ if [ -f ~/.robertlab-apps-addons ] ; then
     rm ~/.robertlab-apps-addons
 fi
 MODULES_BASE=$(dirname $(readlink -f $0))
-echo "## Robert Lab Modules ##" >> ~/.robertlab-apps-addons
-echo "MODULES_DIR=$MODULES_BASE" >> ~/.robertlab-apps-addons
-echo 'if [ -d "$MODULES_DIR" ]; then' >> ~/.robertlab-apps-addons
-echo '  module use $MODULES_DIR' >> ~/.robertlab-apps-addons
-echo 'fi' >> ~/.robertlab-apps-addons
-echo "" >> ~/.robertlab-apps-addons
+{
+    echo "## Robert Lab Modules ##"
+    echo "MODULES_DIR=$MODULES_BASE"
+    echo 'if [ -d "$MODULES_DIR" ]; then'
+    echo '  module use $MODULES_DIR'
+    echo 'fi'
+    echo ""
+} >> ~/.robertlab-apps-addons

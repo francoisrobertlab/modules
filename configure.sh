@@ -39,8 +39,9 @@ fi
 if [ -f ~/.robertlab-apps-addons ] ; then
     rm ~/.robertlab-apps-addons
 fi
+MODULES_BASE=$(dirname $(readlink -f $0))
 echo "## Robert Lab Modules ##" >> ~/.robertlab-apps-addons
-echo "MODULES_DIR=~/projects/def-robertf/robertlab-apps/modules" >> ~/.robertlab-apps-addons
+echo "MODULES_DIR=$MODULES_BASE" >> ~/.robertlab-apps-addons
 echo 'if [ -d "$MODULES_DIR" ]; then' >> ~/.robertlab-apps-addons
 echo '  module use $MODULES_DIR' >> ~/.robertlab-apps-addons
 echo 'fi' >> ~/.robertlab-apps-addons

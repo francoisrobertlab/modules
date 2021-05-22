@@ -2,12 +2,12 @@
 
 if [ "$1" == "clean" ] ; then
     echo "Removing changes made to .bash_profile"
-    if grep -Fq "source .def-robertf-addons" ~/.bash_profile ; then
-        INDEX=$(grep -n "source .def-robertf-addons" ~/.bash_profile | cut -d: -f1)
+    if grep -Fq "source .robertlab-apps-addons" ~/.bash_profile ; then
+        INDEX=$(grep -n "source .robertlab-apps-addons" ~/.bash_profile | cut -d: -f1)
         sed -i "$((INDEX-1)),$((INDEX+2))d" ~/.bash_profile
     fi
-    if [ -f ~/.def-robertf-addons ] ; then
-        rm ~/.def-robertf-addons
+    if [ -f ~/.robertlab-apps-addons ] ; then
+        rm ~/.robertlab-apps-addons
     fi
     exit 0
 fi

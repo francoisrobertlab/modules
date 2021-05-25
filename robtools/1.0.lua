@@ -39,7 +39,7 @@ always_load("bedtools/2.27.1")
 always_load("sra-toolkit/2.9.6")
 always_load("kentutils/20180716")
 always_load("vap/1.1.0")
-always_load("robtools/core/1.2")
+always_load("robtools/core/1.0")
 
 local trimmomatic_home = os.getenv("EBROOTTRIMMOMATIC") or ""
 setenv("TRIMMOMATIC_JAR", pathJoin(trimmomatic_home, "trimmomatic-0.36.jar"))

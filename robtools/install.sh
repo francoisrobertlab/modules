@@ -7,15 +7,7 @@ then
 fi
 
 
-VENV="$ROBTOOLS"/venv
-
-if [ "$1" == "clean" ]
-then
-  echo "Removing python virtual environment at $VENV"
-  rm -R "$VENV"
-  exit 0
-fi
-
+# Clone robtools, if not already cloned.
 if [ ! -d "$ROBTOOLS" ]
 then
   echo "Creating folder $ROBTOOLS"
@@ -36,6 +28,9 @@ then
     git checkout "$ROBTOOLS_VERSION"
   fi
 fi
+
+# Create python virtual environment.
+VENV="$ROBTOOLS"/venv
 if [ ! -d "$VENV" ]
 then
   echo "Creating python virtual environment at $VENV"

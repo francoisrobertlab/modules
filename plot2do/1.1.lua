@@ -3,7 +3,7 @@ For detailed instructions, go to:
     https://github.com/rchereji/plot2DO
 
 This module sets the following environment variables:
-    PLOT2DO_BASE:    directory containing plot2DO
+    PLOT2DO:    directory containing plot2DO
     R_LIBS_USER:     sets R library directory to use plot2DO
     R_PROFILE_USER:  allows to configure CPAN automatically
 
@@ -27,6 +27,9 @@ local module_name = myModuleFullName()
 local module_base = module_path:sub(1,module_path:find(module_name,1,true)-2)
 local apps_base = module_base:gsub("(.*)/(.*)","%1")
 local home = pathJoin(apps_base, module_name)
-setenv("PLOT2DO_BASE", home)
+local module_version = myModuleVersion()
+setenv("PLOT2DO", home)
+setenv("PLOT2DO_VERSION", module_version)
+setenv("PLOT2DO_MODULE", pathJoin(module_base, myModuleName()))
 setenv("R_LIBS_USER", pathJoin(home, "libs"))
 setenv("R_PROFILE_USER", pathJoin(home, ".Rprofile"))

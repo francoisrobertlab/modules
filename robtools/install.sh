@@ -11,9 +11,9 @@ fi
 if [ ! -d "$ROBTOOLS" ]
 then
   echo "Creating folder $ROBTOOLS"
-  mkdir -p $ROBTOOLS
+  mkdir -p "$ROBTOOLS"
 fi
-cd "$ROBTOOLS"
+cd "$ROBTOOLS" || { echo "Folder $ROBTOOLS does not exists"; exit 1; }
 if [ ! -d "$ROBTOOLS/.git" ]
 then
   echo "Cloning robtools in folder $ROBTOOLS and checking out version $ROBTOOLS_VERSION"

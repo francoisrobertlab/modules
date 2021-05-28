@@ -18,9 +18,9 @@ if [ ! -d "$PLOT2DO/.git" ]
 then
   echo "Cloning plot2do in folder $PLOT2DO and checking out version $PLOT2DO_VERSION"
   git clone https://github.com/rchereji/plot2DO.git .
-  if [ "$PLOT2DO_VERSION" == "1.1" ]
+  if [ "$PLOT2DO_VERSION" == "1.0-87fadb4" ]
   then
-    git checkout master
+    git checkout 87fadb4acd23214f83e5440b0ccb02c623fa62d9
   else
     git checkout "$PLOT2DO_VERSION"
   fi

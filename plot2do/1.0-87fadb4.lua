@@ -14,7 +14,7 @@ You will need to load all module(s) on any one of the lines below before the "pl
     gcc/7.3.0
 ]])
 
-whatis("Version: comnit 87fadb4 after 1.0")
+whatis("Version: commit 87fadb4 after 1.0")
 whatis("Keywords: plot2DO, Utility")
 whatis("URL: https://github.com/rchereji/plot2DO")
 whatis("Description: Plot 2D Occupancies")

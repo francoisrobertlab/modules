@@ -3,7 +3,7 @@ For detailed instructions, go to:
     https://github.com/BradleyDickson/siQ-ChIP.git
 
 This module sets the following environment variables:
-    SIQ_CHIP_BASE:  directory containing siQ-ChIP
+    SIQCHIP:  directory containing siQ-ChIP
 ]])
 
 whatis("Version: 1.0.0")

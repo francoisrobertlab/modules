@@ -16,17 +16,18 @@ fi
 cd "$ROBTOOLS" || { echo "Folder $ROBTOOLS does not exists"; exit 1; }
 if [ ! -d "$ROBTOOLS/.git" ]
 then
-  echo "Cloning robtools in folder $ROBTOOLS and checking out version $ROBTOOLS_VERSION"
+  echo "Cloning robtools in folder $ROBTOOLS"
   git clone https://github.com/francoisrobertlab/robtools.git .
-  if [ "$ROBTOOLS_VERSION" == "2.0" ]
-  then
-    git checkout master
-  elif [ "$ROBTOOLS_VERSION" == "1.2" ]
-  then
-    git checkout hotfix-1.2
-  else
-    git checkout "$ROBTOOLS_VERSION"
-  fi
+fi
+echo "Checking out version $ROBTOOLS_VERSION"
+if [ "$ROBTOOLS_VERSION" == "2.0" ]
+then
+  git checkout master
+elif [ "$ROBTOOLS_VERSION" == "1.2" ]
+then
+  git checkout hotfix-1.2
+else
+  git checkout "$ROBTOOLS_VERSION"
 fi
 
 # Create python virtual environment.

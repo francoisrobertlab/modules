@@ -26,5 +26,7 @@ local module_base = module_path:sub(1,module_path:find(module_name,1,true)-2)
 local apps_base = module_base:gsub("(.*)/(.*)","%1")
 local home = pathJoin(apps_base, module_name)
 prepend_path("PATH", home)
-setenv("CHIPEXOQUAL_BASE", home)
+setenv("CHIPEXOQUAL_BASE", home)   -- For compatibility with robtools code
+setenv("CHIPEXOQUAL", home)
+setenv("CHIPEXOQUAL_SCRIPT_VERSION", "master")
 prepend_path("R_LIBS", pathJoin(home,"libs"))

@@ -13,7 +13,7 @@ You will need to load all module(s) on any one of the lines below before the "ch
     gcc/9.3.0
 ]])
 
-whatis("Version: 1.0 or later, but before 1,1")
+whatis("Version: 1.12.0")
 whatis("Keywords: ChIPexoQual, Utility")
 whatis("URL: https://www.bioconductor.org/packages/release/bioc/html/ChIPexoQual.html")
 whatis("Description: Quality control pipeline for ChIP-exo/nexus data.")

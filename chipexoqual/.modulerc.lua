@@ -1,1 +1,1 @@
-module_version("chipexoqual/1.12.0", "default")
+module_version("chipexoqual/1.14.0", "default")

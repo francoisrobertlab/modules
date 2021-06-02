@@ -4,7 +4,6 @@ For detailed instructions, go to:
 
 This module sets the following environment variables:
     CHIPEXOQUAL_BASE:  directory containing ChIPexoQual
-    R_PROFILE_USER:    allows to configure CPAN automatically
 
 This module loads the following modules:
     - r-bundle-bioconductor/3.12
@@ -29,4 +28,3 @@ local home = pathJoin(apps_base, module_name)
 prepend_path("PATH", home)
 setenv("CHIPEXOQUAL_BASE", home)
 prepend_path("R_LIBS", pathJoin(home,"libs"))
-setenv("R_PROFILE_USER", pathJoin(home,".Rprofile"))

@@ -29,4 +29,4 @@ then
   mkdir -p "$CHIPEXOQUAL/libs"
 fi
 echo "Installing ChIPexoQual R package"
-R -e 'BiocManager::install("ChIPexoQual")'
+Rscript -e 'BiocManager::install("ChIPexoQual")'

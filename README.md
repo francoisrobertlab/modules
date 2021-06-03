@@ -5,6 +5,7 @@ Modules for Robert Lab on Compute Canada servers.
 
 * [Install](#install)
 * [Configure - only step for most users](#configure)
+* [Installing software](#installing-software)
 * [Uninstall](#uninstall)
 
 
@@ -70,6 +71,27 @@ If a user wants to stop using robtools, he can run the configuration script with
 ```shell
 ~/projects/def-robertf/apps/modules/configure.sh clean
 ```
+
+
+## Installing software
+
+Most modules have an installation script called `install.sh` that allows to install the required software.
+
+To install robtools.
+
+```shell
+module load robtools
+~/projects/def-robertf/apps/modules/robtools/install.sh
+```
+
+To install plot2DO.
+
+```shell
+module load plot2do
+~/projects/def-robertf/apps/modules/plot2do/install.sh
+```
+
+:memo: *Some installation scripts like plot2DO requires to manually run additional commands, read the last output lines carefully*
 
 
 ## Uninstall

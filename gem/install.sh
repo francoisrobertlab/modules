@@ -2,7 +2,7 @@
 
 if [ -z "$GEM" ]
 then
-  echo "GEM environment variable must be defined, please load a gem module"
+  echo "GEM environment variable must be defined, please load a 'gem' module"
   exit 1
 fi
 

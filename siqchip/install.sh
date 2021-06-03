@@ -2,7 +2,7 @@
 
 if [ -z "$SIQCHIP" ]
 then
-  echo "SIQCHIP environment variable must be defined, please load a siqchip module"
+  echo "SIQCHIP environment variable must be defined, please load a 'siqchip' module"
   exit 1
 fi
 

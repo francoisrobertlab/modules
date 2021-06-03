@@ -2,7 +2,7 @@
 
 if [ -z "$ROBTOOLS" ]
 then
-  echo "ROBTOOLS environment variable must be defined, please load a robtools module"
+  echo "ROBTOOLS environment variable must be defined, please load a 'robtools' module"
   exit 1
 fi
 

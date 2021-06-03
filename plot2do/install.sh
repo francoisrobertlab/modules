@@ -2,7 +2,7 @@
 
 if [ -z "$PLOT2DO" ]
 then
-  echo "PLOT2DO environment variable must be defined, please load a plot2do module"
+  echo "PLOT2DO environment variable must be defined, please load a 'plot2do' module"
   exit 1
 fi
 

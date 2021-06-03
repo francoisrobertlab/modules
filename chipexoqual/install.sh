@@ -2,7 +2,7 @@
 
 if [ -z "$CHIPEXOQUAL" ]
 then
-  echo "CHIPEXOQUAL environment variable must be defined, please load a CHIPEXOQUAL module"
+  echo "CHIPEXOQUAL environment variable must be defined, please load a 'chipexoqual' module"
   exit 1
 fi
 

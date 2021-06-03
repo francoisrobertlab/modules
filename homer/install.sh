@@ -2,7 +2,7 @@
 
 if [ -z "$HOMER" ]
 then
-  echo "HOMER environment variable must be defined, please load a homer module"
+  echo "HOMER environment variable must be defined, please load a 'homer' module"
   exit 1
 fi
 

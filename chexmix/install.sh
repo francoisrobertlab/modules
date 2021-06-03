@@ -2,7 +2,7 @@
 
 if [ -z "$CHEXMIX" ]
 then
-  echo "CHEXMIX environment variable must be defined, please load a chexmix module"
+  echo "CHEXMIX environment variable must be defined, please load a 'chexmix' module"
   exit 1
 fi
 

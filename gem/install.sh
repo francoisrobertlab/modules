@@ -18,3 +18,6 @@ echo "Downloading GEM version $GEM_VERSION"
 GEM_TAR=gem.v"$GEM_VERSION".tar.gz
 wget https://groups.csail.mit.edu/cgs/gem/download/"$GEM_TAR"
 tar -xf "$GEM_TAR"
+rm "$GEM_TAR"
+mv gem/* .
+rmdir gem

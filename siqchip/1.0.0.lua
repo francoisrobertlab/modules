@@ -20,5 +20,5 @@ local apps_base = module_base:gsub("(.*)/(.*)","%1")
 local home = pathJoin(apps_base, module_name)
 setenv("SIQ_CHIP_BASE", home)   -- For compatibility with robtools code
 setenv("SIQCHIP", home)
-setenv("SIQCHIP_VERSION", module_version)
+setenv("SIQCHIP_VERSION", myModuleVersion())
 setenv("SIQCHIP_MODULE", pathJoin(module_base, myModuleName()))

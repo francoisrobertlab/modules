@@ -25,7 +25,6 @@ git checkout "$CHIPEXOQUAL_SCRIPT_VERSION"
 # Install ChIPexoQual R package.
 if [ ! -d "$CHIPEXOQUAL/libs" ]
 then
-  echo "Creating folder $CHIPEXOQUAL"
   mkdir -p "$CHIPEXOQUAL/libs"
 fi
 echo "Installing ChIPexoQual R package"

@@ -5,6 +5,7 @@ Modules for Robert Lab on Compute Canada servers.
 
 * [Install](#install)
 * [Configure - only step for most users](#configure)
+* [Emails - to receive emails when running jobs](#emails)
 * [Installing software](#installing-software)
 * [Uninstall](#uninstall)
 
@@ -70,6 +71,25 @@ If a user wants to stop using robtools, he can run the configuration script with
 
 ```shell
 ~/projects/def-robertf/apps/modules/configure.sh clean
+```
+
+
+## Emails
+
+To receive emails for jobs, run the following command:
+
+:memo: *Replace `$email` with your email address*
+
+```shell
+email-sbatch.sh $email
+```
+
+### Stop receiving emails for jobs
+
+To stop receiving emails for jobs, run the following command:
+
+```shell
+email-sbatch.sh clean
 ```
 
 

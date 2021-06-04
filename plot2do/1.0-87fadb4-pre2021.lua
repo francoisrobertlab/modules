@@ -7,9 +7,7 @@ For detailed instructions, go to:
     https://github.com/rchereji/plot2DO
 
 This module sets the following environment variables:
-    PLOT2DO:         directory containing plot2DO
-    R_LIBS_USER:     sets R library directory to use plot2DO
-    R_PROFILE_USER:  allows to configure CPAN automatically
+    PLOT2DO:  directory containing plot2DO
 
 This module loads the following modules:
     - r/3.6.0

@@ -3,7 +3,7 @@ For detailed instructions, go to:
     https://www.bioconductor.org/packages/release/bioc/html/ChIPexoQual.html
 
 This module sets the following environment variables:
-    CHIPEXOQUAL_BASE:  directory containing ChIPexoQual
+    CHIPEXOQUAL:  directory containing ChIPexoQual
 
 This module loads the following modules:
     - r-bundle-bioconductor/3.12

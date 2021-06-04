@@ -3,8 +3,8 @@ For detailed instructions, go to:
     https://groups.csail.mit.edu/cgs/gem/
 
 This module sets the following environment variables:
-    GEM_BASE:  directory containing GEM and default read distributions files
-    GEM_JAR:   GEM jar file
+    GEM:      directory containing GEM and default read distributions files
+    GEM_JAR:  GEM jar file
 
 This module loads the following modules and their requirements:
     - java/1.8.0_191

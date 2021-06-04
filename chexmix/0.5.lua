@@ -3,8 +3,8 @@ For detailed instructions, go to:
     http://mahonylab.org/software/chexmix/
 
 This module sets the following environment variables:
-    CHEXMIX_BASE:  directory containing ChExMix
-    CHEXMIX_JAR:   ChExMix jar file
+    CHEXMIX:      directory containing ChExMix
+    CHEXMIX_JAR:  ChExMix jar file
 
 This module loads the following modules and their requirements:
     - java/1.8.0_191

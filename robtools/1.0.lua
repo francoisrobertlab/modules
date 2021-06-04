@@ -2,10 +2,6 @@ help([[
 For detailed instructions, go to:
     https://github.com/francoisrobertlab/robtools
 
-This module sets the following environment variables:
-    TRIMMOMATIC_JAR:       Trimmomatic jar file
-    TRIMMOMATIC_ADAPTERS:  Folder containing Trimmomatic adapters sequences
-
 This module loads the following modules and their requirements:
     - robtools/core/1.0
     - python/3.7.4

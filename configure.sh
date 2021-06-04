@@ -50,6 +50,10 @@ then
 fi
 MODULES_BASE=$(dirname $(readlink -f $0))
 {
+  echo "## Add Robert Lab Modules scripts to PATH ##"
+  echo "PATH=$MODULES_BASE:\$PATH"
+  echo "export PATH"
+  echo ""
   echo "## Robert Lab Modules ##"
   echo "MODULES_DIR=$MODULES_BASE"
   echo 'if [ -d "$MODULES_DIR" ]; then'

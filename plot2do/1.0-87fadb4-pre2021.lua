@@ -1,4 +1,8 @@
 help([[
+Module used for analysis before june 2021.
+The module 'plot2do/1.0-87fadb4' should give identical results, but this module
+    is provided in case there are small differences.
+
 For detailed instructions, go to:
     https://github.com/rchereji/plot2DO
 
@@ -19,9 +23,8 @@ whatis("Keywords: plot2DO, Utility")
 whatis("URL: https://github.com/rchereji/plot2DO")
 whatis("Description: Plot 2D Occupancies")
 
-always_load("StdEnv/2018.3")
-always_load("gcc/7.3.0")
-always_load("r-bundle-bioconductor/3.9")
+prereq("gcc/7.3.0")
+always_load("r/3.6.0")
 
 local module_path = myFileName()
 local module_name = myModuleFullName()
@@ -31,4 +34,5 @@ local home = pathJoin(apps_base, module_name)
 setenv("PLOT2DO", home)
 setenv("PLOT2DO_VERSION", myModuleVersion())
 setenv("PLOT2DO_MODULE", pathJoin(module_base, myModuleName()))
-prepend_path("R_LIBS", pathJoin(home,"libs"))
+setenv("R_LIBS_USER", pathJoin(home, "libs"))
+setenv("R_PROFILE_USER", pathJoin(home, ".Rprofile"))

@@ -7,8 +7,7 @@ For detailed instructions, go to:
 whatis("Version: 20200309 - v395_base")
 whatis("Keywords: Utility")
 whatis("URL: https://github.com/ucscGenomeBrowser/kent")
-whatis("Description: Genome Browser and Blat application binaries built for standalone
-                     command-line use")
+whatis("Description: Genome Browser and Blat application binaries built for standalone command-line use")
 
 local module_path = myFileName()
 local module_name = myModuleFullName()

@@ -51,7 +51,7 @@ If your project is not `def-robertf`, run the `change-project.sh` script.
 
 ## Configure
 
-All users that want to use robtools will need to run the configuration script.
+All users that want to use modules will need to run the configuration script.
 
 ```shell
 ~/projects/def-robertf/apps/modules/configure.sh
@@ -67,7 +67,7 @@ robtools --help
 
 ### Remove configuration
 
-If a user wants to stop using robtools, he can run the configuration script with `clean` argument.
+If a user wants to stop using modules, he can run the configuration script with `clean` argument.
 
 ```shell
 ~/projects/def-robertf/apps/modules/configure.sh clean

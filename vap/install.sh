@@ -7,14 +7,14 @@ then
 fi
 
 
-# Download VAP.
-if [ ! -d "$VAP" ]
+if [ -d "$VAP" ]
 then
-  echo "Creating folder $VAP"
-  mkdir -p "$VAP"
+  echo "Deleting old folder $VAP"
+  rm -rf "$VAP"
 fi
+echo "Installing VAP in folder $VAP"
+mkdir -p "$VAP"
 cd "$VAP" || { echo "Folder $VAP does not exists"; exit 1; }
-echo "Downloading VAP version $VAP_VERSION"
 VAP_EXEC=vap_core_"$VAP_VERSION"_linux64
 wget https://bitbucket.org/labjacquespe/vap_core/downloads/"$VAP_EXEC"
 mv "$VAP_EXEC" vap

@@ -7,25 +7,19 @@ then
 fi
 
 
-# Clone chipexoqual from francoisrobertlab, if not already cloned.
-if [ ! -d "$CHIPEXOQUAL" ]
+if [ -d "$CHIPEXOQUAL" ]
 then
-  echo "Creating folder $CHIPEXOQUAL"
-  mkdir -p "$CHIPEXOQUAL"
+  echo "Deleting old folder $CHIPEXOQUAL"
+  rm -rf "$CHIPEXOQUAL"
 fi
+echo "Installing ChIPexoQual in folder $CHIPEXOQUAL"
+mkdir -p "$CHIPEXOQUAL"
 cd "$CHIPEXOQUAL" || { echo "Folder $CHIPEXOQUAL does not exists"; exit 1; }
-if [ ! -d "$CHIPEXOQUAL/.git" ]
-then
-  echo "Cloning chipexoqual from francoisrobertlab in folder $CHIPEXOQUAL"
-  git clone https://github.com/francoisrobertlab/chipexoqual.git .
-fi
+echo "Cloning chipexoqual from francoisrobertlab in folder $CHIPEXOQUAL"
+git clone https://github.com/francoisrobertlab/chipexoqual.git .
 echo "Checking out version $CHIPEXOQUAL_SCRIPT_VERSION"
 git checkout "$CHIPEXOQUAL_SCRIPT_VERSION"
 
 # Install ChIPexoQual R package.
-if [ ! -d "$CHIPEXOQUAL/libs" ]
-then
-  mkdir -p "$CHIPEXOQUAL/libs"
-fi
 echo "Installing ChIPexoQual R package"
 Rscript -e 'BiocManager::install("ChIPexoQual")'

@@ -7,18 +7,15 @@ then
 fi
 
 
-# Clone plot2do, if not already cloned.
-if [ ! -d "$PLOT2DO" ]
+if [ -d "$PLOT2DO" ]
 then
-  echo "Creating folder $PLOT2DO"
-  mkdir -p "$PLOT2DO"
+  echo "Deleting old folder $PLOT2DO"
+  rm -rf "$PLOT2DO"
 fi
+echo "Installing plot2DO in folder $PLOT2DO"
+mkdir -p "$PLOT2DO"
 cd "$PLOT2DO" || { echo "Folder $PLOT2DO does not exists"; exit 1; }
-if [ ! -d "$PLOT2DO/.git" ]
-then
-  echo "Cloning plot2do in folder $PLOT2DO"
-  git clone https://github.com/rchereji/plot2DO.git .
-fi
+git clone https://github.com/rchereji/plot2DO.git .
 echo "Checking out version $PLOT2DO_VERSION"
 if [ "$PLOT2DO_VERSION" == "1.0-87fadb4" ] || [ "$PLOT2DO_VERSION" == "1.0-87fadb4-pre2021" ]
 then

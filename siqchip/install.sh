@@ -7,17 +7,14 @@ then
 fi
 
 
-# Clone siqchip, if not already cloned.
-if [ ! -d "$SIQCHIP" ]
+if [ -d "$SIQCHIP" ]
 then
-  echo "Creating folder $SIQCHIP"
-  mkdir -p "$SIQCHIP"
+  echo "Deleting old folder $SIQCHIP"
+  rm -rf "$SIQCHIP"
 fi
+echo "Installing siQ-ChIP in folder $SIQCHIP"
+mkdir -p "$SIQCHIP"
 cd "$SIQCHIP" || { echo "Folder $SIQCHIP does not exists"; exit 1; }
-if [ ! -d "$SIQCHIP/.git" ]
-then
-  echo "Cloning siqchip in folder $SIQCHIP"
-  git clone https://github.com/BradleyDickson/siQ-ChIP.git .
-fi
+git clone https://github.com/BradleyDickson/siQ-ChIP.git .
 echo "Checking out version $SIQCHIP_VERSION"
 git checkout "v$SIQCHIP_VERSION"

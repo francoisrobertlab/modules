@@ -17,7 +17,8 @@ whatis("Keywords: ChIPexoQual, Utility")
 whatis("URL: https://www.bioconductor.org/packages/release/bioc/html/ChIPexoQual.html")
 whatis("Description: Quality control pipeline for ChIP-exo/nexus data.")
 
-prereq("gcc/9.3.0")
+always_load("StdEnv/2020")
+always_load("gcc/9.3.0")
 always_load("r-bundle-bioconductor/3.12")
 
 local module_path = myFileName()

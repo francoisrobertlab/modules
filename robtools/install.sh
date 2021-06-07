@@ -20,9 +20,6 @@ echo "Checking out version $ROBTOOLS_VERSION"
 if [ "$ROBTOOLS_VERSION" == "2.0" ]
 then
   git checkout master
-elif [ "$ROBTOOLS_VERSION" == "1.2" ]
-then
-  git checkout hotfix-1.2
 else
   git checkout "$ROBTOOLS_VERSION"
 fi

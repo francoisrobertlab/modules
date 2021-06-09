@@ -36,8 +36,8 @@ fi
 # Make sbatch send mail to user by default.
 if grep -Fq "alias sbatch=" ~/.bash_profile
 then
-  sed -i -E "s/alias sbatch=.+/alias sbatch='sbatch --mail-type=NONE --mail-user=\$JOB_MAIL'/" ~/.bash_profile
+  sed -i -E "s/alias sbatch=.+/alias sbatch='sbatch --mail-type=ALL --mail-user=\$JOB_MAIL'/" ~/.bash_profile
 else
   echo "Adding email notification for sbatch"
-  echo "alias sbatch='sbatch --mail-type=NONE --mail-user=\$JOB_MAIL'" >> ~/.bash_profile
+  echo "alias sbatch='sbatch --mail-type=ALL --mail-user=\$JOB_MAIL'" >> ~/.bash_profile
 fi

@@ -43,12 +43,29 @@ then
   }  >> ~/.bash_profile
 fi
 
+# Get path to modules.
+if [ -d "$HOME"/projects ]
+then
+  SCRIPT_PATH=$(dirname $(readlink -f "$0"))
+  for project in "$HOME"/projects/*
+  do
+    PROJECT_PATH=$(readlink -f "$project")
+    if [[ $SCRIPT_PATH == $PROJECT_PATH/* ]]
+    then
+      MODULES_BASE=$project/${SCRIPT_PATH:${#PROJECT_PATH}+1}
+    fi
+  done
+fi
+if [ -z "$MODULES_BASE" ]
+then
+  MODULES_BASE=$(dirname $(readlink -f "$0"))
+fi
+
 # Create .robertlab-apps-addons file to allow loading of robert modules.
 if [ -f ~/.robertlab-apps-addons ]
 then
   rm ~/.robertlab-apps-addons
 fi
-MODULES_BASE=$(dirname $(readlink -f $0))
 {
   echo "## Add Robert Lab Modules scripts to PATH ##"
   echo "PATH=$MODULES_BASE:\$PATH"

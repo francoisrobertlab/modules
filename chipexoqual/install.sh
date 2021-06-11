@@ -24,3 +24,4 @@ git checkout "$CHIPEXOQUAL_SCRIPT_VERSION"
 echo "Installing ChIPexoQual R package"
 mkdir -p "$CHIPEXOQUAL/libs"
 Rscript -e 'BiocManager::install("ChIPexoQual")'
+Rscript -e 'install.packages("optparse")'

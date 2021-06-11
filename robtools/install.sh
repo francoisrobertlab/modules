@@ -31,4 +31,5 @@ python3 -m venv "$VENV"
 VERSION=$(git --git-dir="$ROBTOOLS"/.git rev-parse --abbrev-ref HEAD)
 echo "Updating python libraries using $VERSION"
 "$VENV"/bin/pip install git+file://"$ROBTOOLS"@"$VERSION"
-find "$VENV" -type f -perm 750 -exec sed -i "1 s|^.*$|#!$VENV/bin/python3|g" {} \;
+VENV_REAL=$(dirname $(readlink -f "$VENV"))
+find "$VENV" -type f -perm 750 -exec sed -i "1 s|^.*$|#!$VENV_REAL/bin/python3|g" {} \;

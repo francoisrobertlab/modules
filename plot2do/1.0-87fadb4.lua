@@ -17,7 +17,7 @@ whatis("Keywords: plot2DO, Utility")
 whatis("URL: https://github.com/rchereji/plot2DO")
 whatis("Description: Plot 2D Occupancies")
 
-depends_on("StdEnv/2018.3")
+prereq("StdEnv/2018.3")
 depends_on("gcc/7.3.0")
 depends_on("r-bundle-bioconductor/3.9")
 

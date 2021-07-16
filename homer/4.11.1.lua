@@ -13,7 +13,7 @@ whatis("Keywords: NGS, Motif discovery")
 whatis("URL: http://homer.ucsd.edu/homer/index.html")
 whatis("Description: Software for motif discovery and next generation sequencing analysis")
 
-depends_on("StdEnv/2020")
+prereq("StdEnv/2020")
 depends_on("gcc/9.3.0")
 depends_on("perl/5.30.2")
 depends_on("samtools/1.12")

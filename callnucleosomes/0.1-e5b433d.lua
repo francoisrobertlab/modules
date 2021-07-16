@@ -14,7 +14,7 @@ whatis("Keywords: NGS, Nucleosomes Calling")
 whatis("URL: https://github.com/srinivasramachandran/CallNucleosomes")
 whatis("Description: Calls nucleosomes position")
 
-depends_on("StdEnv/2018.3")
+prereq("StdEnv/2018.3")
 depends_on("perl/5.22.4")
 
 local module_path = myFileName()

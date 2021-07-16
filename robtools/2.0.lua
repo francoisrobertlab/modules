@@ -26,7 +26,7 @@ whatis("Keywords: NGS, Utility")
 whatis("URL: https://github.com/francoisrobertlab/robtools")
 whatis("Description: Tools to analyze next-generation sequencing (NGS) data")
 
-depends_on("StdEnv/2018.3")
+prereq("StdEnv/2018.3")
 depends_on("gcc/7.3.0")
 depends_on("python/3.7.4")
 depends_on("java/1.8.0_121")

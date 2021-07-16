@@ -16,7 +16,7 @@ whatis("Keywords: NGS, Peak Calling")
 whatis("URL: http://mahonylab.org/software/chexmix")
 whatis("Description: ChExMix: the ChIP-exo mixture model")
 
-depends_on("StdEnv/2020")
+prereq("StdEnv/2020")
 depends_on("gcc/9.3.0")
 depends_on("java/1.8.0_192")
 depends_on("meme/5.2.0")

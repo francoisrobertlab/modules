@@ -15,8 +15,8 @@ whatis("Keywords: NGS, Peak Calling")
 whatis("URL: https://groups.csail.mit.edu/cgs/gem/")
 whatis("Description: GEM: High resolution peak calling and motif discovery for ChIP-seq and ChIP-exo data")
 
-always_load("StdEnv/2020")
-always_load("java/1.8.0_192")
+depends_on("StdEnv/2020")
+depends_on("java/1.8.0_192")
 
 local module_path = myFileName()
 local module_name = myModuleFullName()

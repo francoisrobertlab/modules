@@ -17,9 +17,9 @@ whatis("Keywords: plot2DO, Utility")
 whatis("URL: https://github.com/rchereji/plot2DO")
 whatis("Description: Plot 2D Occupancies")
 
-always_load("StdEnv/2018.3")
-always_load("gcc/7.3.0")
-always_load("r-bundle-bioconductor/3.9")
+depends_on("StdEnv/2018.3")
+depends_on("gcc/7.3.0")
+depends_on("r-bundle-bioconductor/3.9")
 
 local module_path = myFileName()
 local module_name = myModuleFullName()

@@ -22,7 +22,7 @@ whatis("URL: https://github.com/rchereji/plot2DO")
 whatis("Description: Plot 2D Occupancies")
 
 prereq("gcc/7.3.0")
-always_load("r/3.6.0")
+depends_on("r/3.6.0")
 
 local module_path = myFileName()
 local module_name = myModuleFullName()

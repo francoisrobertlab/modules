@@ -2,7 +2,7 @@
 
 if [ -z "$HICPRO" ]
 then
-  echo "$HICPRO environment variable must be defined, please load a 'hicpro' module"
+  echo "HICPRO environment variable must be defined, please load a 'hicpro' module"
   exit 1
 fi
 

@@ -10,9 +10,9 @@ This module loads the following modules and their requirements:
 ]])
 
 whatis("Version: 3.0.0")
-whatis("Keywords: NGS, Motif discovery")
-whatis("URL: http://homer.ucsd.edu/homer/index.html")
-whatis("Description: Software for motif discovery and next generation sequencing analysis")
+whatis("Keywords: HiC, Pipeline")
+whatis("URL: https://github.com/nservant/HiC-Pro")
+whatis("Description: An optimized and flexible pipeline for Hi-C data processing")
 
 prereq("StdEnv/2020")
 depends_on("gcc/9.3.0")

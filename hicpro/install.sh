@@ -30,10 +30,17 @@ python3 -m venv "$VENV"
 echo "Installing dependencies"
 "$VENV"/bin/pip install pysam bx-python numpy scipy pandas iced
 
-# Installing HiC-Pro
+# Installing HiC-Pro.
 cd "$SOURCE" || { echo "Folder $SOURCE does not exists"; exit 1; }
 sed -i "s:PREFIX.*:PREFIX = $HICPRO:" config-install.txt
 sed -i "s:CLUSTER_SYS.*:CLUSTER_SYS = SLURM:" config-install.txt
 make configure
 make install
+cd ..
 rm -rf "$SOURCE"
+
+# Fix shebang for python files.
+UTILS="$HICPRO/HiC-Pro_$HICPRO_VERSION"/bin/utils
+VENV_REAL=$(readlink -f "$VENV")
+find "$VENV/bin" -type f -executable -exec sed -i "1 s|^#\!.*$|#!$VENV_REAL/bin/python3|g" {} \;
+find "$UTILS" -type f -executable -exec sed -i "1 s|^#\!.*$|#!$VENV_REAL/bin/python3|g" {} \;

@@ -41,6 +41,15 @@ rm -rf "$SOURCE"
 
 # Fix shebang for python files.
 UTILS="$HICPRO/HiC-Pro_$HICPRO_VERSION"/bin/utils
-VENV_REAL=$(readlink -f "$VENV")
-find "$VENV/bin" -type f -executable -exec sed -i "1 s|^#\!.*$|#!$VENV_REAL/bin/python3|g" {} \;
-find "$UTILS" -type f -executable -exec sed -i "1 s|^#\!.*$|#!$VENV_REAL/bin/python3|g" {} \;
+find "$VENV/bin" -type f -executable -exec sed -i "1 s|^#\!.*$|#!/usr/bin/env hicpro_python_wrapper.sh|g" {} \;
+find "$UTILS" -type f -executable -exec sed -i "1 s|^#\!.*$|#!/usr/bin/env hicpro_python_wrapper.sh|g" {} \;
+if [ -f "$VENV"/bin/hicpro_python_wrapper.sh ]
+then
+  rm "$VENV"/bin/hicpro_python_wrapper.sh
+fi
+{
+  echo '#!/bin/bash'
+  echo 'python="$HICPRO"/venv/bin/python3'
+  echo 'exec "$python" "$@"'
+} >> "$VENV"/bin/hicpro_python_wrapper.sh
+chmod 755 "$VENV"/bin/hicpro_python_wrapper.sh

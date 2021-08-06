@@ -31,5 +31,16 @@ python3 -m venv "$VENV"
 VERSION=$(git --git-dir="$ROBTOOLS"/.git rev-parse --abbrev-ref HEAD)
 echo "Updating python libraries using $VERSION"
 "$VENV"/bin/pip install git+file://"$ROBTOOLS"@"$VERSION"
-VENV_REAL=$(readlink -f "$VENV")
-find "$VENV/bin" -type f -executable -exec sed -i "1 s|^#\!.*$|#!$VENV_REAL/bin/python3|g" {} \;
+
+# Fix shebang for python files.
+find "$VENV/bin" -type f -executable -exec sed -i "1 s|^#\!.*$|#!/usr/bin/env robtools_python_wrapper.sh|g" {} \;
+if [ -f "$VENV"/bin/robtools_python_wrapper.sh ]
+then
+  rm "$VENV"/bin/robtools_python_wrapper.sh
+fi
+{
+  echo '#!/bin/bash'
+  echo 'python="$ROBTOOLS"/venv/bin/python3'
+  echo 'exec "$python" "$@"'
+} >> "$VENV"/bin/robtools_python_wrapper.sh
+chmod 755 "$VENV"/bin/robtools_python_wrapper.sh

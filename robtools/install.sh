@@ -48,16 +48,13 @@ chmod 755 "$VENV"/bin/robtools_python_wrapper.sh
 # Get project name.
 if [ -d "$HOME"/projects ]
 then
-  script_path=$(dirname $(readlink -f "$0"))
-  echo "script_path is $script_path"
+  robtools=$(readlink -f "$ROBTOOLS")
   for project in "$HOME"/projects/*
   do
     project_path=$(readlink -f "$project")
-    echo "project_path is $project_path"
-    if [[ $script_path == $project_path/* ]]
+    if [[ $robtools == $project_path/* ]]
     then
       account=$(basename $project)
-      echo "found account $account"
     fi
   done
 fi

@@ -40,14 +40,6 @@ module load robtools
 ~/projects/def-robertf/apps/modules/robtools/install.sh
 ```
 
-If your project is not `def-robertf`, run the `change-project.sh` script.
-
-:memo: *Replace `$project` with the name of your project*
-
-```shell
-~/projects/def-robertf/apps/modules/robtools/change-project.sh $project
-```
-
 
 ## Configure
 

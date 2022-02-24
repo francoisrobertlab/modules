@@ -14,14 +14,14 @@ install_module () {
   if [ -f "$module_dir"/install.sh ]
   then
     local output
-    output=$(bash "$module_dir"/install.sh "$version")
+    output=$(bash "$module_dir"/install.sh "$version" 2>&1)
     local status=$?
     if [ $status -eq 0 ]
     then
-      printf "Installed module %s\n%s\n\n" "$module" "$output"
+      printf "Installed module %s\n%s\n\n\n\n" "$module" "$output"
       true
     else
-      printf "Failed installation of module %s\n%s\n\n" "$module" "$output"
+      printf "Failed installation of module %s\n%s\n\n\n\n" "$module" "$output"
       false
     fi
   fi

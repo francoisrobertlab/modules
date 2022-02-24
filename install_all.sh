@@ -35,3 +35,8 @@ then
   threads="$SLURM_CPUS_PER_TASK"
 fi
 parallel -P "$threads" --env install_module install_module ::: "$modules"
+
+printf "\n\nRun the following commands to install plot2DO libraries for version 1.0-87fadb4-pre2021 (replace \$project and \$email):\n"
+printf "module purge && module load StdEnv/2018.3 plot2do/1.0-87fadb4-pre2021\n"
+printf "cd \$PLOT2DO\n"
+printf "sbatch --account=\$project --mail-user=\$email --mail-type=ALL plot2do_setup.sh\n\n"

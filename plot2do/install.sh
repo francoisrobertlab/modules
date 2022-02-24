@@ -40,6 +40,7 @@ cp "$PLOT2DO_MODULE"/plot2DO_export_matrix.R "$PLOT2DO"
 mkdir -p "$PLOT2DO/libs"
 if [ "$PLOT2DO_VERSION" == "1.0-87fadb4-pre2021" ]
 then
+  echo "options(repos = c(CRAN = \"https://cran.rstudio.com\"))" > "$PLOT2DO"/.Rprofile
   cp "$PLOT2DO_MODULE"/plot2do_setup.sh "$PLOT2DO"
   echo ""
   echo ""

@@ -1,19 +1,30 @@
 #!/bin/bash
 
-if [ -z "$ROBTOOLS" ]
+# Stop on errors.
+set -e
+
+# cd to script directory
+script_path=$(dirname "$0")
+cd "$script_path" || { echo "Folder $script_path does not exists"; exit 1; }
+
+# Commons functions
+source ../commons.sh
+
+version=$1
+validate_module_version "$version" robtools
+
+# Load module and requirements.
+module purge
+if [ -z "$version" ]
 then
-  echo "ROBTOOLS environment variable must be defined, please load a 'robtools' module"
-  exit 1
+  module load StdEnv/2018.3 robtools
+else
+  module load StdEnv/2018.3 robtools/"$version"
 fi
 
 
-if [ -d "$ROBTOOLS" ]
-then
-  echo "Deleting old folder $ROBTOOLS"
-  rm -rf "$ROBTOOLS"
-fi
+clean_module_dir "$ROBTOOLS"
 echo "Installing robtools in folder $ROBTOOLS"
-mkdir -p "$ROBTOOLS"
 cd "$ROBTOOLS" || { echo "Folder $ROBTOOLS does not exists"; exit 1; }
 git clone https://github.com/francoisrobertlab/robtools.git .
 echo "Checking out version $ROBTOOLS_VERSION"
@@ -25,44 +36,18 @@ else
 fi
 
 # Create python virtual environment.
-VENV="$ROBTOOLS"/venv
-echo "Creating python virtual environment at $VENV"
-python3 -m venv "$VENV"
-VERSION=$(git --git-dir="$ROBTOOLS"/.git rev-parse --abbrev-ref HEAD)
-echo "Updating python libraries using $VERSION"
-"$VENV"/bin/pip install git+file://"$ROBTOOLS"@"$VERSION"
+venv="$ROBTOOLS"/venv
+echo "Creating python virtual environment at $venv"
+python3 -m venv "$venv"
+cloned_version=$(git --git-dir="$ROBTOOLS"/.git rev-parse --abbrev-ref HEAD)
+"$venv"/bin/pip install git+file://"$ROBTOOLS"@"$cloned_version"
 
 # Fix shebang for python files.
-find "$VENV/bin" -type f -executable -exec sed -i "1 s|^#\!.*$|#!/usr/bin/env robtools_python_wrapper.sh|g" {} \;
-if [ -f "$VENV"/bin/robtools_python_wrapper.sh ]
-then
-  rm "$VENV"/bin/robtools_python_wrapper.sh
-fi
-{
-  echo '#!/bin/bash'
-  echo 'python="$ROBTOOLS"/venv/bin/python3'
-  echo 'exec "$python" "$@"'
-} >> "$VENV"/bin/robtools_python_wrapper.sh
-chmod 755 "$VENV"/bin/robtools_python_wrapper.sh
+wrapper="$venv/bin/robtools_python_wrapper.sh"
+write_python_shebang_wrapper "$wrapper" "\$ROBTOOLS/venv/bin/python3"
+fix_python_shebang "$venv/bin" $(basename "$wrapper")
 
-# Get project name.
-if [ -d "$HOME"/projects ]
-then
-  robtools=$(readlink -f "$ROBTOOLS")
-  for project in "$HOME"/projects/*
-  do
-    project_path=$(readlink -f "$project")
-    if [[ $robtools == $project_path/* ]]
-    then
-      account=$(basename $project)
-    fi
-  done
-fi
-if [ -n "$account" ]
-then
-  # Fix sbatch account in bash folder.
-  echo "Changing sbatch account of bash scripts to $account"
-  find bash -maxdepth 1 -type f -exec sed -i "s/^#SBATCH --account=.*$/#SBATCH --account=$account/g" {} \;
-else
-  echo "Could not find sbatch account, bash scripts will use 'def-robertf' as account"
-fi
+# Fix sbatch account in bash folder.
+account=$(get_project_name)
+echo "Changing sbatch account of bash scripts to $account"
+find bash -maxdepth 1 -type f -exec sed -i "s/^#SBATCH --account=.*$/#SBATCH --account=$account/g" {} \;

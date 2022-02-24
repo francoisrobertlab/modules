@@ -1,55 +1,57 @@
 #!/bin/bash
 
-if [ -z "$HICPRO" ]
+# Stop on errors.
+set -e
+
+# cd to script directory
+script_path=$(dirname "$0")
+cd "$script_path" || { echo "Folder $script_path does not exists"; exit 1; }
+
+# Commons functions
+source ../commons.sh
+
+version=$1
+validate_module_version "$version" hicpro
+
+# Load module and requirements.
+module purge
+if [ -z "$version" ]
 then
-  echo "HICPRO environment variable must be defined, please load a 'hicpro' module"
-  exit 1
+  module load StdEnv/2020 hicpro
+else
+  module load StdEnv/2020 hicpro/"$version"
 fi
 
 
-if [ -d "$HICPRO" ]
-then
-  echo "Deleting old folder $HICPRO"
-  rm -rf "$HICPRO"
-fi
+clean_module_dir "$HICPRO"
 echo "Installing HiC-Pro in folder $HICPRO"
-mkdir -p "$HICPRO"
 cd "$HICPRO" || { echo "Folder $HICPRO does not exists"; exit 1; }
-SOURCE="$HICPRO"/source
-echo "Cloning HiC-Pro in folder $SOURCE"
-git clone https://github.com/nservant/HiC-Pro.git "$SOURCE"
-cd "$SOURCE" || { echo "Folder $SOURCE does not exists"; exit 1; }
+source="$HICPRO"/source
+echo "Cloning HiC-Pro in folder $source"
+git clone https://github.com/nservant/HiC-Pro.git "$source"
+cd "$source" || { echo "Folder $source does not exists"; exit 1; }
 echo "Checking out version v$HICPRO_VERSION"
 git checkout v"$HICPRO_VERSION"
 cd ..
 
 # Create python virtual environment.
-VENV="$HICPRO"/venv
-echo "Creating python virtual environment at $VENV"
-python3 -m venv "$VENV"
+venv="$HICPRO"/venv
+echo "Creating python virtual environment at $venv"
+python3 -m venv "$venv"
 echo "Installing dependencies"
-"$VENV"/bin/pip install pysam bx-python numpy scipy pandas iced
+"$venv"/bin/pip install pysam bx-python numpy scipy pandas iced
 
 # Installing HiC-Pro.
-cd "$SOURCE" || { echo "Folder $SOURCE does not exists"; exit 1; }
+cd "$source" || { echo "Folder $source does not exists"; exit 1; }
 sed -i "s:PREFIX.*:PREFIX = $HICPRO:" config-install.txt
 sed -i "s:CLUSTER_SYS.*:CLUSTER_SYS = SLURM:" config-install.txt
 make configure
 make install
 cd ..
-rm -rf "$SOURCE"
+rm -rf "$source"
 
 # Fix shebang for python files.
-UTILS="$HICPRO/HiC-Pro_$HICPRO_VERSION"/bin/utils
-find "$VENV/bin" -type f -executable -exec sed -i "1 s|^#\!.*$|#!/usr/bin/env hicpro_python_wrapper.sh|g" {} \;
-find "$UTILS" -type f -executable -exec sed -i "1 s|^#\!.*$|#!/usr/bin/env hicpro_python_wrapper.sh|g" {} \;
-if [ -f "$VENV"/bin/hicpro_python_wrapper.sh ]
-then
-  rm "$VENV"/bin/hicpro_python_wrapper.sh
-fi
-{
-  echo '#!/bin/bash'
-  echo 'python="$HICPRO"/venv/bin/python3'
-  echo 'exec "$python" "$@"'
-} >> "$VENV"/bin/hicpro_python_wrapper.sh
-chmod 755 "$VENV"/bin/hicpro_python_wrapper.sh
+wrapper="$venv/bin/hicpro_python_wrapper.sh"
+write_python_shebang_wrapper "$wrapper" "\$HICPRO/venv/bin/python3"
+fix_python_shebang "$venv/bin" $(basename "$wrapper")
+fix_python_shebang "$HICPRO/HiC-Pro_$HICPRO_VERSION/bin/utils" $(basename "$wrapper")

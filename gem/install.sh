@@ -1,23 +1,34 @@
 #!/bin/bash
 
-if [ -z "$GEM" ]
+# Stop on errors.
+set -e
+
+# cd to script directory
+script_path=$(dirname "$0")
+cd "$script_path" || { echo "Folder $script_path does not exists"; exit 1; }
+
+# Commons functions
+source ../commons.sh
+
+version=$1
+validate_module_version "$version" gem
+
+# Load module and requirements.
+module purge
+if [ -z "$version" ]
 then
-  echo "GEM environment variable must be defined, please load a 'gem' module"
-  exit 1
+  module load StdEnv/2020 gem
+else
+  module load StdEnv/2020 gem/"$version"
 fi
 
 
-if [ -d "$GEM" ]
-then
-  echo "Deleting old folder $GEM"
-  rm -rf "$GEM"
-fi
+clean_module_dir "$GEM"
 echo "Installing GEM in folder $GEM"
-mkdir -p "$GEM"
 cd "$GEM" || { echo "Folder $GEM does not exists"; exit 1; }
-GEM_TAR=gem.v"$GEM_VERSION".tar.gz
-wget https://groups.csail.mit.edu/cgs/gem/download/"$GEM_TAR"
-tar -xf "$GEM_TAR"
-rm "$GEM_TAR"
+gem_tar=gem.v"$GEM_VERSION".tar.gz
+wget -nv https://groups.csail.mit.edu/cgs/gem/download/"$gem_tar"
+tar -xf "$gem_tar"
+rm "$gem_tar"
 mv gem/* .
 rmdir gem

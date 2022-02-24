@@ -1,19 +1,30 @@
 #!/bin/bash
 
-if [ -z "$PLOT2DO" ]
+# Stop on errors.
+set -e
+
+# cd to script directory
+script_path=$(dirname "$0")
+cd "$script_path" || { echo "Folder $script_path does not exists"; exit 1; }
+
+# Commons functions
+source ../commons.sh
+
+version=$1
+validate_module_version "$version" plot2do
+
+# Load module and requirements.
+module purge
+if [ -z "$version" ]
 then
-  echo "PLOT2DO environment variable must be defined, please load a 'plot2do' module"
-  exit 1
+  module load StdEnv/2018.3 plot2do
+else
+  module load StdEnv/2018.3 plot2do/"$version"
 fi
 
 
-if [ -d "$PLOT2DO" ]
-then
-  echo "Deleting old folder $PLOT2DO"
-  rm -rf "$PLOT2DO"
-fi
+clean_module_dir "$PLOT2DO"
 echo "Installing plot2DO in folder $PLOT2DO"
-mkdir -p "$PLOT2DO"
 cd "$PLOT2DO" || { echo "Folder $PLOT2DO does not exists"; exit 1; }
 git clone https://github.com/rchereji/plot2DO.git .
 echo "Checking out version $PLOT2DO_VERSION"

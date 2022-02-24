@@ -1,19 +1,30 @@
 #!/bin/bash
 
-if [ -z "$CHIPEXOQUAL" ]
+# Stop on errors.
+set -e
+
+# cd to script directory
+script_path=$(dirname "$0")
+cd "$script_path" || { echo "Folder $script_path does not exists"; exit 1; }
+
+# Commons functions
+source ../commons.sh
+
+version=$1
+validate_module_version "$version" chipexoqual
+
+# Load module and requirements.
+module purge
+if [ -z "$version" ]
 then
-  echo "CHIPEXOQUAL environment variable must be defined, please load a 'chipexoqual' module"
-  exit 1
+  module load StdEnv/2020 chipexoqual
+else
+  module load StdEnv/2020 chipexoqual/"$version"
 fi
 
 
-if [ -d "$CHIPEXOQUAL" ]
-then
-  echo "Deleting old folder $CHIPEXOQUAL"
-  rm -rf "$CHIPEXOQUAL"
-fi
+clean_module_dir "$CHIPEXOQUAL"
 echo "Installing ChIPexoQual in folder $CHIPEXOQUAL"
-mkdir -p "$CHIPEXOQUAL"
 cd "$CHIPEXOQUAL" || { echo "Folder $CHIPEXOQUAL does not exists"; exit 1; }
 echo "Cloning chipexoqual from francoisrobertlab in folder $CHIPEXOQUAL"
 git clone https://github.com/francoisrobertlab/chipexoqual.git .

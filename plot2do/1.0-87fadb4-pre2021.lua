@@ -21,7 +21,8 @@ whatis("Keywords: plot2DO, Utility")
 whatis("URL: https://github.com/rchereji/plot2DO")
 whatis("Description: Plot 2D Occupancies")
 
-prereq("gcc/7.3.0")
+prereq("StdEnv/2018.3")
+depends_on("gcc/7.3.0")
 depends_on("r/3.6.0")
 
 local module_path = myFileName()

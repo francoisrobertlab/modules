@@ -1,18 +1,29 @@
 #!/bin/bash
 
-if [ -z "$CHEXMIX" ]
+# Stop on errors.
+set -e
+
+# cd to script directory
+script_path=$(dirname "$0")
+cd "$script_path" || { echo "Folder $script_path does not exists"; exit 1; }
+
+# Commons functions
+source ../commons.sh
+
+version=$1
+validate_module_version "$version" chexmix
+
+# Load module and requirements.
+module purge
+if [ -z "$version" ]
 then
-  echo "CHEXMIX environment variable must be defined, please load a 'chexmix' module"
-  exit 1
+  module load StdEnv/2020 chexmix
+else
+  module load StdEnv/2020 chexmix/"$version"
 fi
 
 
-if [ -d "$CHEXMIX" ]
-then
-  echo "Deleting old folder $CHEXMIX"
-  rm -rf "$CHEXMIX"
-fi
+clean_module_dir "$CHEXMIX"
 echo "Installing ChExMix in folder $CHEXMIX"
-mkdir -p "$CHEXMIX"
 cd "$CHEXMIX" || { echo "Folder $CHEXMIX does not exists"; exit 1; }
-wget http://lugh.bmb.psu.edu/software/chexmix/chexmix_v"$CHEXMIX_VERSION".jar
+wget -nv http://lugh.bmb.psu.edu/software/chexmix/chexmix_v"$CHEXMIX_VERSION".jar

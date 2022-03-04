@@ -58,7 +58,7 @@ write_python_shebang_wrapper () {
   {
     echo "#!/bin/bash"
     echo "python=$python"
-    echo "exec \$python \$@"
+    echo "exec \"\$python\" \"\$@\""
   } >> "$wrapper"
   chmod 755 "$wrapper"
 }

@@ -30,7 +30,7 @@ git clone https://github.com/francoisrobertlab/robtools.git .
 echo "Checking out version $ROBTOOLS_VERSION"
 if [ "$ROBTOOLS_VERSION" == "2.0" ]
 then
-  git checkout master
+  git checkout main
 else
   git checkout "$ROBTOOLS_VERSION"
 fi

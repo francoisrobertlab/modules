@@ -29,5 +29,5 @@ local home = pathJoin(apps_base, module_name)
 prepend_path("PATH", home)
 setenv("CHIPEXOQUAL_BASE", home)   -- For compatibility with robtools code
 setenv("CHIPEXOQUAL", home)
-setenv("CHIPEXOQUAL_SCRIPT_VERSION", "master")
+setenv("CHIPEXOQUAL_SCRIPT_VERSION", "main")
 prepend_path("R_LIBS", pathJoin(home,"libs"))

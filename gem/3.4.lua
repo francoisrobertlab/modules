@@ -7,7 +7,7 @@ This module sets the following environment variables:
     GEM_JAR:  GEM jar file
 
 This module loads the following modules and their requirements:
-    - java/1.8.0_191
+    - java/1.8.0_192
 ]])
 
 whatis("Version: 3.4")

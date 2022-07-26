@@ -7,7 +7,7 @@ This module sets the following environment variables:
     CHEXMIX_JAR:  ChExMix jar file
 
 This module loads the following modules and their requirements:
-    - java/1.8.0_191
+    - java/1.8.0_192
     - meme/5.2.0
 ]])
 

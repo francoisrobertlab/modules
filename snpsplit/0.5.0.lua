@@ -11,8 +11,7 @@ whatis("Keywords: Alignment, Allele")
 whatis("URL: https://github.com/FelixKrueger/SNPsplit")
 whatis("Description: Allele-specific alignment sorting.")
 
-prereq("StdEnv/2020")
-depends_on("perl/5.30.2")
+prereq(atleast("perl","5.16.3"))
 
 local module_path = myFileName()
 local module_name = myModuleFullName()

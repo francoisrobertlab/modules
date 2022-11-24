@@ -17,9 +17,9 @@ validate_module_version "$version" snpsplit
 module purge
 if [ -z "$version" ]
 then
-  module load StdEnv/2020 snpsplit
+  module load StdEnv/2020 perl/5.30.2 snpsplit
 else
-  module load StdEnv/2020 snpsplit/"$version"
+  module load StdEnv/2020 perl/5.30.2 snpsplit/"$version"
 fi
 
 

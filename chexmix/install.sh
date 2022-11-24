@@ -26,4 +26,4 @@ fi
 clean_module_dir "$CHEXMIX"
 echo "Installing ChExMix in folder $CHEXMIX"
 cd "$CHEXMIX" || { echo "Folder $CHEXMIX does not exists"; exit 1; }
-wget -nv http://lugh.bmb.psu.edu/software/chexmix/chexmix_v"$CHEXMIX_VERSION".jar
+wget -nv https://github.com/seqcode/chexmix/releases/download/v"$CHEXMIX_VERSION"/chexmix_v"$CHEXMIX_VERSION".jar

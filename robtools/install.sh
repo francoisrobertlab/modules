@@ -39,6 +39,7 @@ fi
 venv="$ROBTOOLS"/venv
 echo "Creating python virtual environment at $venv"
 python3 -m venv "$venv"
+xargs "$venv/bin/pip" install <<< "${ROBTOOLS_PIP}"
 cloned_version=$(git --git-dir="$ROBTOOLS"/.git rev-parse --abbrev-ref HEAD)
 "$venv"/bin/pip install git+file://"$ROBTOOLS"@"$cloned_version"
 

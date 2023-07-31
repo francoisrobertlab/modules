@@ -14,8 +14,6 @@ whatis("Keywords: NGS, Utility")
 whatis("URL: https://github.com/francoisrobertlab/robtools")
 whatis("Description: Tools to analyze next-generation sequencing (NGS) data")
 
-prereq(atleast("python","3.5.4"))
-
 local module_path = myFileName()
 local module_name = myModuleFullName()
 local module_base = module_path:sub(1,module_path:find(module_name,1,true)-2)

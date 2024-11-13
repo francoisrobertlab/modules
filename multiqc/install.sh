@@ -17,9 +17,12 @@ validate_module_version "$version" multiqc
 module purge
 if [ -z "$version" ]
 then
-  module load StdEnv/2020 python/3.9.6 multiqc
-else
+  module load StdEnv/2023 python/3.12.4 multiqc
+elif [ "$version" == "1.13" ]
+then
   module load StdEnv/2020 python/3.9.6 multiqc/"$version"
+else
+  module load StdEnv/2023 python/3.12.4 multiqc/"$version"
 fi
 
 
@@ -37,4 +40,4 @@ echo "Installing dependencies"
 # Fix shebang for python files.
 wrapper="$venv/bin/multiqc_python_wrapper.sh"
 write_python_shebang_wrapper "$wrapper" "\$MULTIQC/venv/bin/python3"
-fix_python_shebang "$venv/bin" $(basename "$wrapper")
+fix_python_shebang "$venv/bin" "$(basename "$wrapper")"
